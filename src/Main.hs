@@ -18,7 +18,7 @@ isPalindrome number = numberString == reverseNumberString
 
 getLychrelsNumber :: Integer -> Integer -> String
 getLychrelsNumber number transformations
-  | transformations <= 0 = "Couldn't find palindrome of number."
+  | transformations <= 0 = "Couldn't find palindrome of number. Number is Lychrel's number."
   | isPalindrome counterSum = "Found Palindrome, " ++ show counterSum
   | otherwise = getLychrelsNumber counterSum (transformations - 1)
   where
@@ -26,4 +26,12 @@ getLychrelsNumber number transformations
 
 main :: IO ()
 main = do
-  print (getLychrelsNumber 59 4)
+  putStrLn "Find Lychrel's number"
+  putStrLn "#####################"
+  putStrLn "Enter number you want to check (natural):"
+  input1 <- getLine
+  let number = read input1 :: Integer
+  putStrLn "Enter number of attemptst you want to make:"
+  input2 <- getLine
+  let attempts = read input2 :: Integer
+  print (getLychrelsNumber number attempts)
